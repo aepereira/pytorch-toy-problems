@@ -2,7 +2,7 @@
 Toy script to get used to LSTM
 and GRU on PyTorch.
 
-Trains a single-cell recurrent
+Trains a single-layer recurrent
 neural network to add sequences
 of arbitrary lengths of binary
 numbers.
