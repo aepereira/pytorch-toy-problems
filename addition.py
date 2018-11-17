@@ -17,12 +17,12 @@ from datagen import datagen_add
 
 
 if __name__ == "__main__":
-    epochs = 100
+    epochs = 10
     batch_size = 256
     batches_per_epoch = 100
     # Maximum sequence length during training
     max_seq_len = 10
-    cell = 'GRU'
+    cell = 'LSTM'
 
     x_test, y_test = next(datagen_add(batch_size=1000,
                                   max_len=50))
