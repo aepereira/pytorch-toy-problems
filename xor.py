@@ -10,9 +10,7 @@ lengths.
 Author: Arnaldo E. Pereira
 """
 
-import numpy as np
 import torch
-#import torch.nn as nn
 from toy_nets import OneCell
 from datagen import datagen_xor
 
@@ -26,7 +24,7 @@ if __name__ == "__main__":
     cell = 'GRU'
 
     x_test, y_test = next(datagen_xor(batch_size=1000,
-                                  max_len=100))
+                                      max_len=100))
 
     use_cuda = torch.cuda.is_available()
     device = torch.device("cuda" if use_cuda else "cpu")
@@ -40,4 +38,4 @@ if __name__ == "__main__":
                 max_seq_len,
                 epochs=epochs,
                 batch_size=batch_size,
-                batches_per_epoch = batches_per_epoch)
+                batches_per_epoch=batches_per_epoch)

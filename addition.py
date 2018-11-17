@@ -10,7 +10,6 @@ numbers.
 Author: Arnaldo E. Pereira
 """
 
-import numpy as np
 import torch
 from toy_nets import AdditionCell
 from datagen import datagen_add
@@ -25,7 +24,7 @@ if __name__ == "__main__":
     cell = 'LSTM'
 
     x_test, y_test = next(datagen_add(batch_size=1000,
-                                  max_len=50))
+                                      max_len=50))
 
     use_cuda = torch.cuda.is_available()
     device = torch.device("cuda" if use_cuda else "cpu")

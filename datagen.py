@@ -29,6 +29,7 @@ def datagen_xor(batch_size=64, max_len=100):
                       for binary_num in sequences]).float().view([batch_size, max_len, 1])
     yield x, y
 
+
 def to_decimal(b):
     if not isinstance(b, np.ndarray):
         b = np.array(b)
@@ -36,6 +37,7 @@ def to_decimal(b):
     if b[-1] == 1:
         d *= -1
     return d
+
 
 def to_binary(d):
     sign = [0]
@@ -49,6 +51,7 @@ def to_binary(d):
         b = np.concatenate([padding, b])
     return b.tolist()
 
+
 def datagen_add(batch_size=64, max_len=10):
     """Handles 32 bit numbers. Rightmost digit is the sign (0 for
     positive, 1 for negative). Zero-padded to the left.
@@ -58,7 +61,7 @@ def datagen_add(batch_size=64, max_len=10):
     bit_size = BIT_SIZE
     # Always choose at least the sign bit and one exponent bit.
     bit_lens = np.linspace(2, bit_size, num=bit_size - 1, dtype=int)
-    
+
     sequences = []
     labels = []
     for _ in range(batch_size):

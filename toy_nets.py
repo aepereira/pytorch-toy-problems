@@ -9,8 +9,6 @@ Author: Arnaldo E. Pereira
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import torch.nn.functional as F
-import numpy as np
 import datagen
 
 
@@ -69,7 +67,7 @@ class OneCell(nn.Module):
               max_seq_len,
               epochs=100,
               batch_size=256,
-              batches_per_epoch = 100):
+              batches_per_epoch=100):
 
         if self.device == torch.device('cuda'):
             print("Training on: {}".format(torch.cuda.get_device_name(0)))
@@ -80,10 +78,10 @@ class OneCell(nn.Module):
             print("TRAINING EPOCH {} of {}".format(e + 1, epochs))
 
             for b in range(batches_per_epoch):
-                #print("Mini-batch {} of {}".format(b + 1, batches_per_epoch))
+                # print("Mini-batch {} of {}".format(b + 1, batches_per_epoch))
                 # Generate training data for this epoch
                 x_train, y_train = next(self.datagen(batch_size=batch_size,
-                                                    max_len=max_seq_len))
+                                                     max_len=max_seq_len))
 
                 x_train = x_train.to(self.device)
                 y_train = y_train.to(self.device)
