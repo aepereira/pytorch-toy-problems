@@ -69,6 +69,9 @@ def datagen_add(batch_size=64, max_len=10):
             bit_len = np.random.choice(bit_lens)
             padding = [0] * (bit_size - bit_len)
             b = np.random.choice([0, 1], size=bit_len, replace=True).tolist()
+            # Handle special case of -0
+            if np.sum(b[:-1]) == 0:
+                b[-1] = 0
             b = padding + b
             binaries.append(b)
             decimals.append(to_decimal(b))
